@@ -23,7 +23,7 @@
 <rfc ipr="trust200902" category="std"
      docName="draft-brown-device-stock-ua">
   <front>
-    <title>Forwarded HTTP Extension</title>
+    <title>Device-Stock-UA HTTP Extension</title>
     <author initials="T." surname="Brown"
             fullname="Tiffany Brown">
       <organization>Opera Software</organization>
