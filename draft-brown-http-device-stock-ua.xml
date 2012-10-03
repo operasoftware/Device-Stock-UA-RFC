@@ -14,7 +14,6 @@
           <!ENTITY I-D.ietf-httpbis-p1-messaging SYSTEM
                    "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-httpbis-p1-messaging-19.xml">
           ]>
-<?xml-stylesheet href="s.css" ?>
 <?rfc strict="yes" ?>
 <?rfc toc="yes"?>
 <?rfc sortrefs="yes" ?>
@@ -60,7 +59,7 @@
     <abstract>
       <t>
         This document standardizes an HTTP extension header field that
-        allows third-party HTTP-clients to include the user agent
+        allows third-party HTTP clients and embeddable HTTP client components to include the user agent
         string of the HTTP-client that is bundled with the device
         operating system.
       </t>
@@ -78,18 +77,18 @@
         agent limitations, quirks and capabilities.
       </t>
 
-      <!-- <t>
+      <t>
         Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. In some cases, the user agent string is also used to infer what other software may be running in addition to the user agent.
       </t>
 
-  <t>
+     <t>
         This works as follows: When the HTTP client includes a
         User-Agent header, the value of the header is compared to a
         datastore of stock or native user agent strings and known
         capabilities of the device on which it is known to run.
         Responses are then tailored based on the results supplied by
         this datastore.
-      </t> -->
+      </t>
 
       <t>
 	Such content negotiation assumes a one-to-one relationship
