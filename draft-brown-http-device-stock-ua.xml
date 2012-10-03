@@ -201,14 +201,6 @@
         publishers to recognise the underlying device.
       </t>
 
-<!--      <section title="Future extensions">
-        <t>
-          One may extend this RFC by writing new RFCs that define new parameters.
-          IANA should be notified if an RFC is updating this RFC with
-          new valid parameters.
-        </t>
-      </section> -->
-
     </section>
 
 

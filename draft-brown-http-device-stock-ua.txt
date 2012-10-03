@@ -1,0 +1,164 @@
+Device-Stock-UA HTTP Extension
+
+Tiffany Brown
+Opera Software
+Gjerdrums vei 19
+OSLO
+NO-0484
+tiffanyb@opera.com
+
+
+Ronan Cremin
+Afilias Technologies Limited
+2 La Touche House
+Dublin
+1
+rcremin@afilias.info
+
+Applications
+Network Working Group
+Internet-Draft
+I-D
+RFC
+
+
+This document standardizes an HTTP extension header field that allows
+third-party HTTP clients and embeddable HTTP client components to
+include the user agent string of the HTTP-client that is bundled with
+the device operating system.
+
+
+An optional header, User-Agent was originally defined by Hypertext
+Transfer Protocol RFC 1945 (since superseded by ). Its intent was to
+enable statistical tracking, allow tracing of protocol violations,
+and provide a means for tailoring responses based on HTTP user agent
+limitations, quirks and capabilities.
+
+
+Application developers have long used the user agent string to infer
+user agent capability. Increasingly, developers are relying on the
+user agent string to infer the capabilities of the hardware,
+firmware, and operating system on which the user agent runs. In some
+cases, the user agent string is also used to infer what other
+software may be running in addition to the user agent.
+
+
+This works as follows: When the HTTP client includes a User-Agent
+header, the value of the header is compared to a datastore of stock
+or native user agent strings and known capabilities of the device on
+which it is known to run. Responses are then tailored based on the
+results supplied by this datastore.
+
+Such content negotiation assumes a one-to-one relationship between
+the value of the User-Agent header and a device. However, many HTTP
+clients do not have such a relationship -- third-party web browsers
+that run on top of device operating system software, for example.
+
+To compensate for this, some third-party clients include an
+additional, non-standardized header. The value of this header is set
+to the user agent string of the device's native client. In practice,
+several different non-standard headers are in use, and do not all
+comply with
+
+Applications can use such headers, when available, to serve content
+optimized for a particular device. This document standardizes the
+syntax and semantics for the Device-Stock-UA header for this purpose.
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in RFC2119.
+
+
+
+
+
+This specification uses the Augmented Backus-Naur Form (ABNF)
+notation of  with the list rule extension defined in Section 3.2.5 of
+I-D.ietf-httpbis-p1-messaging.
+
+
+
+
+
+The Device-Stock-UA HTTP header is an OPTIONAL header field that,
+when used, discloses the user agent of the native browser for a
+device or operating system. This is for statistical purposes, as well
+as to tailor responses to particular user agent or device
+constraints.
+
+
+
+When the Device-Stock-UA header is included with a request, other
+non-standard headers that report a user agent string may be included.
+
+
+
+Third-party browsers that use the same user agent string as the
+device's default browser SHOULD NOT include the Device-Stock-UA
+header, i.e. its presence indicates the use of something other than
+the default browser user-agent string.
+
+
+
+If the user agent string for the default browser changes, as with an
+operating system update, the Device-Stock-UA header SHOULD mirror
+this change.
+
+
+
+The parameter names are case-insensitive.
+
+The header field can be defined in augmented BNF syntax as:
+
+
+
+Device-Stock-UA = "Device-Stock-UA" ":" 1*(user agent string)
+
+
+
+
+Example:
+
+Device-Stock-UA: CERN-LineMode/2.15 libwww/2.17b3
+
+
+
+
+
+
+Entities that provide web analytics services SHOULD use the
+Device-Stock-UA header (if present) in addition to the User-Agent
+header in their identification of devices to ensure that devices are
+correctly measured.
+
+
+
+Content publishers MAY wish to use the Device-Stock-UA header (if
+present) rather than the User-Agent header in order to determine the
+nature and capabilities of the underlying device rather than, or in
+addition to, the capabilities of the browser in question.
+
+
+
+Publishers of third-party HTTP-capable clients SHOULD include the
+Device-Stock-UA with each HTTP request in order to enable publishers
+to recognise the underlying device.
+
+
+
+
+
+
+
+
+
+
+This document specifies the HTTP header listed below, which should be
+added to the permanent HTTP header registry defined in RFC3864.
+
+
+
+
+
+
+
