@@ -14,7 +14,6 @@
           <!ENTITY I-D.ietf-httpbis-p1-messaging SYSTEM
                    "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-httpbis-p1-messaging-19.xml">
           ]>
-<?xml-stylesheet href="s.css" ?>
 <?rfc strict="yes" ?>
 <?rfc toc="yes"?>
 <?rfc sortrefs="yes" ?>
@@ -81,8 +80,6 @@
       <t>
         Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. For example, the user agent string is sometimes used to infer the display size, or whether the user agent allows access to the device file system.         In some cases, the user agent string is used to infer what other software may be running in addition to the user agent, such as a bundled media player or mapping service.
       </t>
-
-    <t>
 
      <t>
         This works as follows: When the HTTP client includes a
@@ -165,16 +162,22 @@
         The header field can be defined in augmented BNF syntax as:
 
         <figure> <!-- BNF START -->
+          <preamble></preamble>
           <artwork>
         Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
           </artwork> <!-- BNF END -->
+          <postamble></postamble>
       </figure></t>
 
       <t>
         Example:
-        <figure><artwork>
+        <figure>
+         <preamble></preamble>
+         <artwork>
     Device-Stock-UA: CERN-LineMode/2.15 libwww/2.17b3
-        </artwork></figure>
+        </artwork>
+        <postamble></postamble>
+        </figure>
       </t>
 
       <t>
@@ -223,19 +226,15 @@
         in <xref target="RFC3864" />.
        </t>
 
-        <t>
-            <figure>
-               <artwork>Header field: Device-Stock-UA</artwork>
-               <artwork>Applicable protocol: http/https</artwork>
-                <artwork>Status: standard</artwork>
-   <artwork>Author/Change controller:</artwork>
-       <artwork>IETF (iesg@ietf.org)</artwork>
-       <artwork>Internet Engineering Task Force</artwork>
-   <artwork>Specification document(s): this specification</artwork>
-   <artwork>Related information: none</artwork>
-            </figure>
-        </t>
-
+      <t>
+        Header field: Device-Stock-UA
+        Applicable protocol: http/https
+        Status: standard
+        Author/Change controller: IETF (iesg@ietf.org)
+        Internet Engineering Task Force
+        Specification document(s): this specification
+        Related information: none
+      </t>
 
     </section>
   </middle>
