@@ -203,9 +203,17 @@
 
     </section>
 
+    <section title="Security Considerations">
+        <t>Because the Device-Stock-UA header includes hardware and operating system/firmware information, it may help an attacker narrow the scope of an attack by first targeting the client device.</t>
+
+        <t>The value of Device-Stock-UA may not correctly represent the hardware and software. It can easily be spoofed on the client or modified between the endpoints.</t>
+
+        <t>This header may reveal more information about the hardware or firmware of the device that can be used for tracking purposes.</t>
 
 
-    <section title="IANA considerations">
+    </section>
+
+    <section title="IANA Considerations">
       <t>
         This document specifies the HTTP header listed below, which
         should be added to the permanent HTTP header registry defined
