@@ -70,7 +70,7 @@
   <middle>
     <section title="Introduction">
       <t>
-        An optional header, User-Agent was originally defined by
+        An optional header field, User-Agent was originally defined by
         Hypertext Transfer Protocol RFC 1945 (since superseded by
         <xref target="RFC2616" />). Its intent was to enable
         statistical tracking, allow tracing of protocol violations,
@@ -79,12 +79,14 @@
       </t>
 
       <t>
-        Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. In some cases, the user agent string is also used to infer what other software may be running in addition to the user agent.
+        Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. For example, the user agent string is sometimes used to infer the display size, or whether the user agent allows access to the device file system.         In some cases, the user agent string is used to infer what other software may be running in addition to the user agent, such as a bundled media player or mapping service.
       </t>
+
+    <t>
 
      <t>
         This works as follows: When the HTTP client includes a
-        User-Agent header, the value of the header is compared to a
+        User-Agent header field, the value of the header field is compared to a
         datastore of stock or native user agent strings and known
         capabilities of the device on which it is known to run.
         Responses are then tailored based on the results supplied by
@@ -93,7 +95,7 @@
 
       <t>
 	Such content negotiation assumes a one-to-one relationship
-	between the value of the User-Agent header and a device.
+	between the value of the User-Agent header field and a device.
 	However, many HTTP clients do not have such a relationship --
 	third-party web browsers that run on top of device operating
 	system software, for example.
@@ -101,16 +103,15 @@
 
       <t>
 	To compensate for this, some third-party clients include an
-	additional, non-standardized header. The value of this header is set to the
+	additional, non-standardized header field. The value of this header field is set to the
 	user agent string of the device's native client. In practice,
-	several different non-standard headers are in use, for example: X-OperaMini-Phone-UA, used by Opera Software ASA; X-Device-User-Agent; and X-ATT-DeviceId, used by AT&amp;T Inc.
+	several different non-standard header fields are in use, for example: X-OperaMini-Phone-UA, used by Opera Software ASA; X-Device-User-Agent; and X-ATT-DeviceId, used by AT&amp;T Inc.
 	  </t>
 
       <t>
-	Applications can use such headers, when available, to serve
-	content optimized for a particular device. This document
-	standardizes the syntax and semantics for the Device-Stock-UA
-	header for this purpose.
+	Applications can use such header fields, when available, to serve
+	content optimized for a particular device, such as a mobile phone, electronic reader, or tablet computer. This document standardizes the syntax and semantics for the Device-Stock-UA
+	header field for this purpose.
       </t>
     </section>
 
@@ -126,15 +127,13 @@
     <section title="Syntax Notations">
       <t>
         This specification uses the Augmented Backus-Naur Form (ABNF)
-        notation of <xref target="RFC5234" /> with the list rule
-        extension defined in Section 3.2.5 of <xref
-        target="I-D.ietf-httpbis-p1-messaging" />.
+        notation of <xref target="RFC5234" />.
       </t>
     </section>
 
     <section title="Device-Stock-UA"  anchor="int_device_stock_ua">
       <t>
-        The Device-Stock-UA HTTP header is an OPTIONAL header field
+        The Device-Stock-UA HTTP header field is an OPTIONAL header field
         that, when used, discloses the user agent of the native
         browser for a device or operating system. This is for
         statistical purposes, as well as to tailor responses to
@@ -142,21 +141,21 @@
       </t>
 
       <t>
-        When the Device-Stock-UA header is included with a request,
-        other non-standard headers that report a user agent string may
+        When the Device-Stock-UA header field is included with a request,
+        other non-standard header fields that report a user agent string may
         be included.
       </t>
 
       <t>
         Third-party browsers that use the same user agent string as
         the device's default browser SHOULD NOT include the
-        Device-Stock-UA header, i.e. its presence indicates the use of
+        Device-Stock-UA header field, i.e. its presence indicates the use of
         something other than the default browser user-agent string.
       </t>
 
       <t>
         If the user agent string for the default browser changes, as
-        with an operating system update, the Device-Stock-UA header
+        with an operating system update, the Device-Stock-UA header field
         SHOULD mirror this change.
       </t>
 
@@ -167,7 +166,7 @@
 
         <figure> <!-- BNF START -->
           <artwork>
-        Device-Stock-UA = "Device-Stock-UA" ":" 1*(user agent string)
+        Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
           </artwork> <!-- BNF END -->
       </figure></t>
 
@@ -177,20 +176,24 @@
     Device-Stock-UA: CERN-LineMode/2.15 libwww/2.17b3
         </artwork></figure>
       </t>
+
+      <t>
+      The user-agent-string should be retrieved from the firmware, matching that of the HTTP client bundled with the firmware.
+      </t>
   </section>
 
-    <section title="Use of Device-Stock-UA Header">
+    <section title="Use of Device-Stock-UA Header Field">
       <t>
         Entities that provide web analytics services SHOULD use the
-        Device-Stock-UA header (if present) in addition to the
-        User-Agent header in their identification of devices to ensure
+        Device-Stock-UA header field (if present) in addition to the
+        User-Agent header field in their identification of devices to ensure
         that devices are correctly measured.
       </t>
 
       <t>
-        Content publishers may use the Device-Stock-UA header
-        (if present) rather than the User-Agent header in order to
-        determine the nature and capabilities of the underlying device
+        Content publishers may use the Device-Stock-UA header field
+        (if present) rather than the User-Agent header field in order to
+        infer the nature and capabilities of the underlying device
         rather than, or in addition to, the capabilities of the
         browser in question.
       </t>
@@ -204,21 +207,36 @@
     </section>
 
     <section title="Security Considerations">
-        <t>Because the Device-Stock-UA header includes hardware and operating system/firmware information, it may help an attacker narrow the scope of an attack by first targeting the client device.</t>
+        <t>Because the Device-Stock-UA header field includes hardware and operating system/firmware information, it may help an attacker narrow the scope of an attack by first targeting the client device.</t>
 
         <t>The value of Device-Stock-UA may not correctly represent the hardware and software. It can easily be spoofed on the client or modified between the endpoints.</t>
 
-        <t>This header may reveal more information about the hardware or firmware of the device that can be used for tracking purposes.</t>
+        <t>This header field may reveal more information about the hardware or firmware of the device that can be used for tracking purposes.</t>
 
 
     </section>
 
     <section title="IANA Considerations">
       <t>
-        This document specifies the HTTP header listed below, which
-        should be added to the permanent HTTP header registry defined
+        This document specifies the HTTP header field listed below, which
+        should be added to the permanent HTTP header field registry defined
         in <xref target="RFC3864" />.
        </t>
+
+        <t>
+            <figure>
+               <artwork>Header field: Device-Stock-UA</artwork>
+               <artwork>Applicable protocol: http/https</artwork>
+                <artwork>Status: standard</artwork>
+   <artwork>Author/Change controller:</artwork>
+       <artwork>IETF (iesg@ietf.org)</artwork>
+       <artwork>Internet Engineering Task Force</artwork>
+   <artwork>Specification document(s): this specification</artwork>
+   <artwork>Related information: none</artwork>
+            </figure>
+        </t>
+
+
     </section>
   </middle>
 
@@ -231,7 +249,6 @@
       &RFC3864;
       &RFC5234;
       &RFC6648;
-      &I-D.ietf-httpbis-p1-messaging;
     </references>
 
   </back>
