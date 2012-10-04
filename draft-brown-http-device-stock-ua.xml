@@ -14,6 +14,7 @@
           <!ENTITY I-D.ietf-httpbis-p1-messaging SYSTEM
                    "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.draft-ietf-httpbis-p1-messaging-19.xml">
           ]>
+<?xml-stylesheet href="s.css" ?>
 <?rfc strict="yes" ?>
 <?rfc toc="yes"?>
 <?rfc sortrefs="yes" ?>
@@ -102,9 +103,8 @@
 	To compensate for this, some third-party clients include an
 	additional, non-standardized header. The value of this header is set to the
 	user agent string of the device's native client. In practice,
-	several different non-standard headers are in use, and do not all
-	comply with <xref target="RFC6648" />
-      </t>
+	several different non-standard headers are in use, for example: X-OperaMini-Phone-UA, used by Opera Software ASA; X-Device-User-Agent; and X-ATT-DeviceId, used by AT&amp;T Inc.
+	  </t>
 
       <t>
 	Applications can use such headers, when available, to serve
@@ -188,7 +188,7 @@
       </t>
 
       <t>
-        Content publishers MAY wish to use the Device-Stock-UA header
+        Content publishers may use the Device-Stock-UA header
         (if present) rather than the User-Agent header in order to
         determine the nature and capabilities of the underlying device
         rather than, or in addition to, the capabilities of the
