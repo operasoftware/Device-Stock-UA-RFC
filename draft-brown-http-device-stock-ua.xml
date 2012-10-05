@@ -74,15 +74,15 @@
         <xref target="RFC2616" />). Its intent was to enable
         statistical tracking, allow tracing of protocol violations,
         and provide a means for tailoring responses based on HTTP user
-        agent limitations, quirks and capabilities.
+        agent limitations, quirks, and capabilities.
       </t>
 
       <t>
-        Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. For example, the user agent string is sometimes used to infer the display size, or whether the user agent allows access to the device file system.         In some cases, the user agent string is used to infer what other software may be running in addition to the user agent, such as a bundled media player or mapping service.
+        Application developers have long used the user agent string to infer user agent capability. Increasingly, developers are relying on the user agent string to infer the capabilities of the hardware, firmware, and operating system on which the user agent runs. For example, the user agent string is sometimes used to infer the display size or whether the user agent allows access to the device file system.  In some cases, the user agent string is used to infer which other software may be running in addition to the user agent, such as a bundled media player or mapping service.
       </t>
 
      <t>
-        This works as follows: When the HTTP client includes a
+        This works as follows: when the HTTP client includes a
         User-Agent header field, the value of the header field is compared to a
         datastore of stock or native user agent strings and known
         capabilities of the device on which it is known to run.
@@ -146,7 +146,7 @@
       <t>
         Third-party browsers that use the same user agent string as
         the device's default browser SHOULD NOT include the
-        Device-Stock-UA header field, i.e. its presence indicates the use of
+        Device-Stock-UA header field, i.e., its presence indicates the use of
         something other than the default browser user-agent string.
       </t>
 
@@ -205,7 +205,7 @@
       <t>
         Publishers of third-party HTTP-capable clients SHOULD include
         the Device-Stock-UA with each HTTP request in order to enable
-        publishers to recognise the underlying device.
+        publishers to recognize the underlying device.
       </t>
 
     </section>
