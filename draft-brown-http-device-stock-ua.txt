@@ -4,8 +4,8 @@
 Network Working Group                                           T. Brown
 Internet-Draft                                            Opera Software
 Intended status: Standards Track                               R. Cremin
-Expires: March 5, 2013                      Afilias Technologies Limited
-                                                          September 2012
+Expires: April 8, 2013                      Afilias Technologies Limited
+                                                         October 5, 2012
 
 
                      Device-Stock-UA HTTP Extension
@@ -33,7 +33,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 5, 2013.
+   This Internet-Draft will expire on April 8, 2013.
 
 Copyright Notice
 
@@ -52,22 +52,22 @@ Copyright Notice
 
 
 
-Brown & Cremin            Expires March 5, 2013                 [Page 1]
+Brown & Cremin            Expires April 8, 2013                 [Page 1]
 
-Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
+Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . . . 3
    2.  Notational Conventions  . . . . . . . . . . . . . . . . . . . . 3
-   3.  Syntax Notations  . . . . . . . . . . . . . . . . . . . . . . . 3
+   3.  Syntax Notations  . . . . . . . . . . . . . . . . . . . . . . . 4
    4.  Device-Stock-UA . . . . . . . . . . . . . . . . . . . . . . . . 4
-   5.  Use of Device-Stock-UA Header . . . . . . . . . . . . . . . . . 4
-   6.  Security considerations . . . . . . . . . . . . . . . . . . . . 5
-   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . . . 5
+   5.  Use of Device-Stock-UA Header Field . . . . . . . . . . . . . . 5
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . . . 5
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . . 5
    8.  Normative references  . . . . . . . . . . . . . . . . . . . . . 5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . . 5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . . 6
 
 
 
@@ -108,144 +108,178 @@ Table of Contents
 
 
 
-Brown & Cremin            Expires March 5, 2013                 [Page 2]
+Brown & Cremin            Expires April 8, 2013                 [Page 2]
 
-Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
+Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 1.  Introduction
 
-   An optional header, User-Agent was originally defined by Hypertext
-   Transfer Protocol RFC 1945 (since superseded by [RFC2616]).  Its
-   intent was to enable statistical tracking, allow tracing of protocol
-   violations, and provide a means for tailoring responses based on HTTP
-   user agent limitations, quirks and capabilities.
+   An optional header field, User-Agent was originally defined by
+   Hypertext Transfer Protocol RFC 1945 (since superseded by [RFC2616]).
+   Its intent was to enable statistical tracking, allow tracing of
+   protocol violations, and provide a means for tailoring responses
+   based on HTTP user agent limitations, quirks and capabilities.
 
    Application developers have long used the user agent string to infer
    user agent capability.  Increasingly, developers are relying on the
    user agent string to infer the capabilities of the hardware,
-   firmware, and operating system on which the user agent runs.  In some
-   cases, the user agent string is also used to infer what other
-   software may be running in addition to the user agent.
+   firmware, and operating system on which the user agent runs.  For
+   example, the user agent string is sometimes used to infer the display
+   size, or whether the user agent allows access to the device file
+   system.  In some cases, the user agent string is used to infer what
+   other software may be running in addition to the user agent, such as
+   a bundled media player or mapping service.
 
    This works as follows: When the HTTP client includes a User-Agent
-   header, the value of the header is compared to a datastore of stock
-   or native user agent strings and known capabilities of the device on
-   which it is known to run.  Responses are then tailored based on the
-   results supplied by this datastore.
+   header field, the value of the header field is compared to a
+   datastore of stock or native user agent strings and known
+   capabilities of the device on which it is known to run.  Responses
+   are then tailored based on the results supplied by this datastore.
 
    Such content negotiation assumes a one-to-one relationship between
-   the value of the User-Agent header and a device.  However, many HTTP
-   clients do not have such a relationship -- third-party web browsers
-   that run on top of device operating system software, for example.
+   the value of the User-Agent header field and a device.  However, many
+   HTTP clients do not have such a relationship -- third-party web
+   browsers that run on top of device operating system software, for
+   example.
 
    To compensate for this, some third-party clients include an
-   additional, non-standardized header.  The value of this header is set
-   to the user agent string of the device's native client.  In practice,
-   several different non-standard headers are in use, and do not all
-   comply with [RFC6648]
+   additional, non-standardized header field.  The value of this header
+   field is set to the user agent string of the device's native client.
+   In practice, several different non-standard header fields are in use,
+   for example: X-OperaMini-Phone-UA, used by Opera Software ASA;
+   X-Device-User-Agent; and X-ATT-DeviceId, used by AT&T Inc.
 
-   Applications can use such headers, when available, to serve content
-   optimized for a particular device.  This document standardizes the
-   syntax and semantics for the Device-Stock-UA header for this purpose.
+   Applications can use such header fields, when available, to serve
+   content optimized for a particular device, such as a mobile phone,
+   electronic reader, or tablet computer.  This document standardizes
+   the syntax and semantics for the Device-Stock-UA header field for
+   this purpose.
 
 
 2.  Notational Conventions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+
+
+
+Brown & Cremin            Expires April 8, 2013                 [Page 3]
+
+Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
+
+
    document are to be interpreted as described in [RFC2119].
 
 
 3.  Syntax Notations
 
    This specification uses the Augmented Backus-Naur Form (ABNF)
-   notation of [RFC5234] with the list rule extension defined in Section
-
-
-
-Brown & Cremin            Expires March 5, 2013                 [Page 3]
-
-Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
-
-
-   3.2.5 of [I-D.ietf-httpbis-p1-messaging].
+   notation of [RFC5234].
 
 
 4.  Device-Stock-UA
 
-   The Device-Stock-UA HTTP header is an OPTIONAL header field that,
-   when used, discloses the user agent of the native browser for a
+   The Device-Stock-UA HTTP header field is an OPTIONAL header field
+   that, when used, discloses the user agent of the native browser for a
    device or operating system.  This is for statistical purposes, as
    well as to tailor responses to particular user agent or device
    constraints.
 
-   When the Device-Stock-UA header is included with a request, other
-   non-standard headers that report a user agent string may be included.
+   When the Device-Stock-UA header field is included with a request,
+   other non-standard header fields that report a user agent string may
+   be included.
 
    Third-party browsers that use the same user agent string as the
    device's default browser SHOULD NOT include the Device-Stock-UA
-   header, i.e. its presence indicates the use of something other than
-   the default browser user-agent string.
+   header field, i.e. its presence indicates the use of something other
+   than the default browser user-agent string.
 
    If the user agent string for the default browser changes, as with an
-   operating system update, the Device-Stock-UA header SHOULD mirror
-   this change.
+   operating system update, the Device-Stock-UA header field SHOULD
+   mirror this change.
 
    The parameter names are case-insensitive.  The header field can be
    defined in augmented BNF syntax as:
 
-           Device-Stock-UA = "Device-Stock-UA" ":" 1*(user agent string)
+
+           Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
+           User-Agent = "User-Agent" ":" 1*( product | comment )
 
    Example:
 
+
        Device-Stock-UA: CERN-LineMode/2.15 libwww/2.17b3
 
+   The user-agent-string should be retrieved from the firmware, matching
+   that of the HTTP client bundled with the firmware.
 
-5.  Use of Device-Stock-UA Header
+
+
+
+
+
+
+Brown & Cremin            Expires April 8, 2013                 [Page 4]
+
+Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
+
+
+5.  Use of Device-Stock-UA Header Field
 
    Entities that provide web analytics services SHOULD use the Device-
-   Stock-UA header (if present) in addition to the User-Agent header in
-   their identification of devices to ensure that devices are correctly
-   measured.
+   Stock-UA header field (if present) in addition to the User-Agent
+   header field in their identification of devices to ensure that
+   devices are correctly measured.
 
-   Content publishers MAY wish to use the Device-Stock-UA header (if
-   present) rather than the User-Agent header in order to determine the
-   nature and capabilities of the underlying device rather than, or in
-   addition to, the capabilities of the browser in question.
+   Content publishers may use the Device-Stock-UA header field (if
+   present) rather than the User-Agent header field in order to infer
+   the nature and capabilities of the underlying device rather than, or
+   in addition to, the capabilities of the browser in question.
 
    Publishers of third-party HTTP-capable clients SHOULD include the
    Device-Stock-UA with each HTTP request in order to enable publishers
    to recognise the underlying device.
 
 
+6.  Security Considerations
 
-Brown & Cremin            Expires March 5, 2013                 [Page 4]
-
-Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
+   Because the Device-Stock-UA header field includes hardware and
+   operating system/firmware information, it may help an attacker narrow
+   the scope of an attack by first targeting the client device.
+
+   The value of Device-Stock-UA may not correctly represent the hardware
+   and software.  It can easily be spoofed on the client or modified
+   between the endpoints.
+
+   This header field may reveal more information about the hardware or
+   firmware of the device that can be used for tracking purposes.
 
 
-6.  Security considerations
+7.  IANA Considerations
 
-   Blah blah
+   This document specifies the HTTP header field listed below, which
+   should be added to the permanent HTTP header field registry defined
+   in [RFC3864].
 
-
-7.  IANA considerations
-
-   This document specifies the HTTP header listed below, which should be
-   added to the permanent HTTP header registry defined in [RFC3864].
+   Header field: Device-Stock-UA Applicable protocol: http/https Status:
+   standard Author/Change controller: IETF (iesg@ietf.org) Internet
+   Engineering Task Force Specification document(s): this specification
+   Related information: none
 
 
 8.  Normative references
 
-   [I-D.ietf-httpbis-p1-messaging]
-              Fielding, R., Lafon, Y., and J. Reschke, "HTTP/1.1, part
-              1: URIs, Connections, and Message Parsing",
-              draft-ietf-httpbis-p1-messaging-19 (work in progress),
-              March 2012.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+
+
+
+Brown & Cremin            Expires April 8, 2013                 [Page 5]
+
+Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
+
 
    [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
               Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
@@ -273,14 +307,6 @@ Authors' Addresses
    Email: tiffanyb@opera.com
 
 
-
-
-
-Brown & Cremin            Expires March 5, 2013                 [Page 5]
-
-Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
-
-
    Ronan Cremin
    Afilias Technologies Limited
    2 La Touche House
@@ -306,31 +332,5 @@ Internet-Draft       Device-Stock-UA HTTP Extension       September 2012
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Brown & Cremin            Expires March 5, 2013                 [Page 6]
+Brown & Cremin            Expires April 8, 2013                 [Page 6]
 

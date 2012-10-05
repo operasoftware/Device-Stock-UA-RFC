@@ -48,7 +48,7 @@
     </address>
     </author>
 
-    <date month="September" year="2012" />
+    <date month="October" year="2012" />
 
     <area>Applications</area>
     <workgroup>Network Working Group</workgroup>
@@ -165,6 +165,7 @@
           <preamble></preamble>
           <artwork>
         Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
+        User-Agent = "User-Agent" ":" 1*( product | comment )
           </artwork> <!-- BNF END -->
           <postamble></postamble>
       </figure></t>
