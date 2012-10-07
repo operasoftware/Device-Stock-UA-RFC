@@ -4,8 +4,8 @@
 Network Working Group                                           T. Brown
 Internet-Draft                                            Opera Software
 Intended status: Standards Track                               R. Cremin
-Expires: April 8, 2013                      Afilias Technologies Limited
-                                                         October 5, 2012
+Expires: April 10, 2013                     Afilias Technologies Limited
+                                                         October 7, 2012
 
 
                      Device-Stock-UA HTTP Extension
@@ -33,7 +33,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 8, 2013.
+   This Internet-Draft will expire on April 10, 2013.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 1]
+Brown & Cremin           Expires April 10, 2013                 [Page 1]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 2]
+Brown & Cremin           Expires April 10, 2013                 [Page 2]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -119,19 +119,19 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
    Hypertext Transfer Protocol RFC 1945 (since superseded by [RFC2616]).
    Its intent was to enable statistical tracking, allow tracing of
    protocol violations, and provide a means for tailoring responses
-   based on HTTP user agent limitations, quirks and capabilities.
+   based on HTTP user agent limitations, quirks, and capabilities.
 
    Application developers have long used the user agent string to infer
    user agent capability.  Increasingly, developers are relying on the
    user agent string to infer the capabilities of the hardware,
    firmware, and operating system on which the user agent runs.  For
    example, the user agent string is sometimes used to infer the display
-   size, or whether the user agent allows access to the device file
-   system.  In some cases, the user agent string is used to infer what
+   size or whether the user agent allows access to the device file
+   system.  In some cases, the user agent string is used to infer which
    other software may be running in addition to the user agent, such as
    a bundled media player or mapping service.
 
-   This works as follows: When the HTTP client includes a User-Agent
+   This works as follows: when the HTTP client includes a User-Agent
    header field, the value of the header field is compared to a
    datastore of stock or native user agent strings and known
    capabilities of the device on which it is known to run.  Responses
@@ -164,7 +164,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 3]
+Brown & Cremin           Expires April 10, 2013                 [Page 3]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -192,7 +192,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
    Third-party browsers that use the same user agent string as the
    device's default browser SHOULD NOT include the Device-Stock-UA
-   header field, i.e. its presence indicates the use of something other
+   header field, i.e., its presence indicates the use of something other
    than the default browser user-agent string.
 
    If the user agent string for the default browser changes, as with an
@@ -204,7 +204,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
            Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
-           User-Agent = "User-Agent" ":" 1*( product | comment )
+           User-Agent = <Defined in RFC2616 Section 14.43>
 
    Example:
 
@@ -220,7 +220,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 4]
+Brown & Cremin           Expires April 10, 2013                 [Page 4]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -239,7 +239,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
    Publishers of third-party HTTP-capable clients SHOULD include the
    Device-Stock-UA with each HTTP request in order to enable publishers
-   to recognise the underlying device.
+   to recognize the underlying device.
 
 
 6.  Security Considerations
@@ -276,7 +276,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 5]
+Brown & Cremin           Expires April 10, 2013                 [Page 5]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -332,5 +332,5 @@ Authors' Addresses
 
 
 
-Brown & Cremin            Expires April 8, 2013                 [Page 6]
+Brown & Cremin           Expires April 10, 2013                 [Page 6]
 
