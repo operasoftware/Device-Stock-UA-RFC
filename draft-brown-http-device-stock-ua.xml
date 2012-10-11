@@ -164,7 +164,7 @@
         <figure> <!-- BNF START -->
           <preamble></preamble>
           <artwork>
-        Device-Stock-UA = "Device-Stock-UA" ":" 1*(user-agent-string)
+        Device-Stock-UA = "Device-Stock-UA" ":" (user-agent)
         User-Agent = &lt;Defined in RFC2616 Section 14.43&gt;
           </artwork> <!-- BNF END -->
           <postamble></postamble>
@@ -211,11 +211,11 @@
     </section>
 
     <section title="Security Considerations">
-        <t>Because the Device-Stock-UA header field includes hardware and operating system/firmware information, it may help an attacker narrow the scope of an attack by first targeting the client device.</t>
+        <t>Because the Device-Stock-UA header field includes hardware and operating system/firmware information, it may help an attacker narrow the scope of an attack by first targeting client device specific vulnerabilities.</t>
 
         <t>The value of Device-Stock-UA may not correctly represent the hardware and software. It can easily be spoofed on the client or modified between the endpoints.</t>
 
-        <t>This header field may reveal more information about the hardware or firmware of the device that can be used for tracking purposes.</t>
+        <t>This header field may reveal more specific information about the user agent than would otherwise be the case. This information could then be used for tracking purposes.</t>
 
 
     </section>
