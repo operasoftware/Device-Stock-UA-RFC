@@ -164,7 +164,7 @@
         <figure> <!-- BNF START -->
           <preamble></preamble>
           <artwork>
-        Device-Stock-UA = "Device-Stock-UA" ":" (user-agent)
+        Device-Stock-UA = "Device-Stock-UA" ":" (User-Agent)
         User-Agent = &lt;Defined in RFC2616 Section 14.43&gt;
           </artwork> <!-- BNF END -->
           <postamble></postamble>
@@ -236,8 +236,12 @@
         Specification document(s): this specification
         Related information: none
       </t>
-
     </section>
+
+    <section title="Acknowledgments">
+        <t>Thanks to Andreas Bovens, Bruce Lawson, Susan Nichols, Martin Nilsson, and Andreas Petersson for their feedback.</t>
+    </section>
+
   </middle>
 
 
