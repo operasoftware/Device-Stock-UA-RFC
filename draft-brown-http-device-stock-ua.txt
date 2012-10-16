@@ -4,8 +4,8 @@
 Network Working Group                                           T. Brown
 Internet-Draft                                            Opera Software
 Intended status: Standards Track                               R. Cremin
-Expires: April 18, 2013                     Afilias Technologies Limited
-                                                        October 15, 2012
+Expires: April 19, 2013                     Afilias Technologies Limited
+                                                        October 16, 2012
 
 
                      Device-Stock-UA HTTP Extension
@@ -33,7 +33,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 18, 2013.
+   This Internet-Draft will expire on April 19, 2013.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 1]
+Brown & Cremin           Expires April 19, 2013                 [Page 1]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 2]
+Brown & Cremin           Expires April 19, 2013                 [Page 2]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -164,7 +164,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 3]
+Brown & Cremin           Expires April 19, 2013                 [Page 3]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -220,7 +220,7 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 4]
+Brown & Cremin           Expires April 19, 2013                 [Page 4]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
@@ -272,16 +272,16 @@ Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 8.  Acknowledgments
 
-   Thanks to Andreas Bovens, Bruce Lawson, Susan Nichols, Martin
+   Thanks to Andreas Bovens, Hamish Graham, Bruce Lawson, Susan Nichols,
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 5]
+Brown & Cremin           Expires April 19, 2013                 [Page 5]
 
 Internet-Draft       Device-Stock-UA HTTP Extension         October 2012
 
 
-   Nilsson, and Andreas Petersson for their feedback.
+   Martin Nilsson, and Andreas Petersson for their feedback.
 
 
 9.  Normative references
@@ -332,5 +332,5 @@ Authors' Addresses
 
 
 
-Brown & Cremin           Expires April 18, 2013                 [Page 6]
+Brown & Cremin           Expires April 19, 2013                 [Page 6]
 
